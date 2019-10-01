@@ -1,0 +1,22 @@
+#服务器配置
+server:
+  #端口
+  port: 80
+
+#数据源配置
+spring:
+  datasource:
+    url: jdbc:mysql://120.78.206.78:3306/user
+    username: root
+    password: Root123..
+
+
+#mybatis配置
+mybatis:
+    
+    #用来实例化mapper接口
+  type-aliases-package: com.littlepage.mapper
+    
+    #对应的sql映射
+  mapper-locations:
+  - classpath:mybatis/mapper/**.xml

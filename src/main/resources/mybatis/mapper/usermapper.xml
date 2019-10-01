@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.littlepage.mapper.UserMapper">
+	<insert id="addUser" parameterType="com.littlepage.entity.User">
+		INSERT INTO user(name,password,datetime,status)
+        VALUES
+        (
+        #{name},#{password},#{datetime},#{status}
+        )
+	</insert>
+	<delete id="deleteUserById">
+		UPDATE user set status=0 
+		where id=#{id}
+	</delete>
+	<update id="updateUser" parameterType="com.littlepage.entity.User">
+		UPDATE user SET
+		name=#{name},password=#{password},datetime=#{datetime}
+		WHERE
+		id=#{id} and status!=0
+	</update>
+	<select id="getUserById" resultType="com.littlepage.entity.User">
+		select * from user where id=#{id} and status!=0
+	</select>
+	<select id="getAllUser" resultType="com.littlepage.entity.User">
+		select * from user where status!=0
+	</select>
+	<select id="getUserByName" resultType="com.littlepage.entity.User">
+		select * from user where status!=0 and name=#{name}
+	</select>
+</mapper>
+
